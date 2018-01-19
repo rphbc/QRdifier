@@ -1,0 +1,7 @@
+numpy==1.14.0
+opencv-python==3.4.0.12
+Pillow==5.0.0
+pypng==0.0.18
+PyQRCode==1.2.1
+zbar==0.10
+zbarlight==1.2
