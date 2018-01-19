@@ -8,7 +8,7 @@ import zbar
 cap = cv2.VideoCapture(0)
 qrcodepresent = False
 
-while(True):
+while (True):
     # Capture frame-by-frame
     ret, frame = cap.read()
 
@@ -28,22 +28,22 @@ while(True):
     scanner.scan(zbar_image)
 
     # Prints data from image.
-    for decoded in zbar_image:
-        if not decoded:
-            print('nao tem nada')
-        if qrcodepresent==False:
-            qrcodepresent = True
-            print(decoded.data)
+    decoded = [x.data for x in zbar_image]
 
-    # print(zbar_image)
-        
-    if not zbar_image and qrcodepresent==True:
+    if not decoded:
         qrcodepresent = False
-        print('no qrcode present - reseting')
+    elif not qrcodepresent:
+        print(decoded)
+        qrcodepresent = True
+    # for decoded in zbar_image:
+    #     if not decoded:
+    #         print('nao tem nada')
+    #     if qrcodepresent==False:
+    #         qrcodepresent = True
+    #         print(decoded.data)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
 
 # When everything done, release the capture
 cap.release()
