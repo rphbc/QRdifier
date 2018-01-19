@@ -41,7 +41,6 @@ while(True):
         qrcodepresent = False
         print('no qrcode present - reseting')
 
-
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
